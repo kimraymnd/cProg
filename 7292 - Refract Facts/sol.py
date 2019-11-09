@@ -18,13 +18,14 @@ def main():
         d, h, x, n1, n2 = dataset
         sol = 0
         temp = math.asin(n2/n1) # set at critical angle
-        while(temp > 0.00001):
+        while(temp > 1e-9):
             if testsol(sol,dataset):
                 sol -= temp
             else:
                 sol += temp
             temp = temp/2
-        stdout.write("%.2f\n" % (math.degrees(sol)))
+        # stdout.write("%.2f\n" % (math.degrees(sol)))
+        stdout.write("%.2f\n" % (round(math.degrees(sol), 2)))
         dataset = [float(x) for x in stdin.readline().split()]
 
 if __name__ == '__main__':
